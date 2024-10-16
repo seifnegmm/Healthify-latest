@@ -8,6 +8,10 @@ This project contains:
 
 The project is dockerized and can be run using Docker Compose.
 
+![Login Page Screenshot](images/login-page.png)
+
+![Dashboard page Screenshot](images/dashboard-page.jpg)
+
 ---
 
 ## Prerequisites
