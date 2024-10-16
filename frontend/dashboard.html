@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/dashboardPage.css" />
+    <link rel="stylesheet" href="./src/css/circularBars.css" />
+    <!-- <script type="module" src="src/js/test.js"></script> -->
+    <script
+      type="module"
+      src="src/js/controllers/dashboardController.js"
+    ></script>
+
+    <title>Healthify</title>
+  </head>
+  <body>
+    <div class="message__container">
+      <!-- <div class="message__view message__view--welcome">
+        <svg class="message__icon happy__icon">
+          <use href="./src/img/icons.svg#happy-icon"></use>
+        </svg>
+        <span class="message welcome--message">Welcome back</span>
+      </div> -->
+      <!-- <div class="message__view message__view--err">
+        <svg class="message__icon error__icon">
+          <use href="./src/img/icons.svg#error-icon"></use>
+        </svg>
+        <span class="message error--message">Error Logging in!</span>
+      </div> -->
+    </div>
+    <header class="nav__bar">
+      <div class="logo">
+        <a href="#" class="main__logo">
+          <span class="logo__name">Healthify</span>
+        </a>
+      </div>
+
+      <div class="nav">
+        <ul class="nav__list">
+          <li>
+            <a href="#" class="main__nav--link user__logout--btn">
+              <svg class="logout-logo logo__nav">
+                <use href="./src/img/icons.svg#logout-icon"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="main__nav--link user__profile--btn">
+              <svg class="settings-logo logo__nav">
+                <use href="./src/img/icons.svg#settings-icon"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="main__nav--link">
+              <img class="user__image" src="./src/img/whiteBackground.jpeg" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="main__container">
+        <div class="container container__main-health-data">
+          <!-- <div class="container--data">
+            <div class="container__steps-metrics">
+              <div class="container__date-picker">
+                <svg class="icon__date-picker icon__date-picker--left">
+                  <use href="./src/img/icons.svg#left-arrow-icon"></use>
+                </svg>
+                <span class="date">Sunday, 15 April</span>
+                <svg class="icon__date-picker icon__date-picker--right">
+                  <use href="./src/img/icons.svg#right-arrow-icon"></use>
+                </svg>
+              </div>
+              <div class="circular__bar circular__bar-steps">
+                <div class="percent steps__percent">
+                  <div class="dot steps__dot"></div>
+                  <svg class="circle__icon circle__icon-steps">
+                    <circle cx="95" cy="95" r="90"></circle>
+                    <circle cx="95" cy="95" r="90"></circle>
+                  </svg>
+                  <div class="content content__footsteps">
+                    <div class="details steps__details">
+                      <span class="steps__number">0</span>
+                      <span>steps</span>
+                    </div>
+                    <svg class="metrics__icon footsteps__icon">
+                      <use href="./src/img/icons.svg#footsteps-icon"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container__other-metrics">
+              <div class="metrics calories--metrics">
+                <div class="circular__bar circular__bar-other">
+                  <div class="percent others__percent">
+                    <div class="dot others__dot calories__dot"></div>
+                    <svg
+                      class="circle__icon circle__icon-others circle__icon-calories"
+                    >
+                      <circle cx="70" cy="70" r="70"></circle>
+                      <circle cx="70" cy="70" r="70"></circle>
+                    </svg>
+                    <div class="content content__calories">
+                      <div class="details calories__details others__details">
+                        <span class="calories__number others__number">0</span>
+                        <span>cals</span>
+                      </div>
+                      <svg class="metrics__icon others__icon calories__icon">
+                        <use href="./src/img/icons.svg#calories-icon"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="metrics distance__metrics">
+                <div class="metrics distance--metrics">
+                  <div class="circular__bar circular__bar-other">
+                    <div class="percent others__percent">
+                      <div class="dot others__dot distance__dot"></div>
+                      <svg
+                        class="circle__icon circle__icon-others circle__icon-distance"
+                      >
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                      </svg>
+                      <div class="content content__distance">
+                        <div class="details distance__details others__details">
+                          <span class="distance__number others__number">0</span>
+                          <span>km</span>
+                        </div>
+                        <svg class="metrics__icon others__icon distance__icon">
+                          <use href="./src/img/icons.svg#distance-icon"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="metrics floors-climbed__metrics">
+                <div class="metrics floors-climbed--metrics">
+                  <div class="circular__bar circular__bar-other">
+                    <div class="percent others__percent">
+                      <div class="dot others__dot floors-climbed__dot"></div>
+                      <svg
+                        class="circle__icon circle__icon-others circle__icon-floors-climbed"
+                      >
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                      </svg>
+                      <div class="content content__floors-climbed">
+                        <div class="details floors__details others__details">
+                          <span class="floors__number others__number">0</span>
+                          <span>floors</span>
+                        </div>
+                        <svg
+                          class="metrics__icon others__icon floors-climbed__icon"
+                        >
+                          <use href="./src/img/icons.svg#stairs-icon"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="metrics active--mins__metrics">
+                <div class="metrics active-mins--metrics">
+                  <div class="circular__bar circular__bar-other">
+                    <div class="percent others__percent">
+                      <div class="dot others__dot active__dot"></div>
+                      <svg
+                        class="circle__icon circle__icon-others circle__icon-active"
+                      >
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                      </svg>
+                      <div class="content content__active-mins">
+                        <div
+                          class="details active-mins__details others__details"
+                        >
+                          <span class="active-mins__number others__number"
+                            >0</span
+                          >
+                          <span>active mins</span>
+                        </div>
+                        <svg
+                          class="metrics__icon others__icon active-mins__icon"
+                        >
+                          <use href="./src/img/icons.svg#energy-icon"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div> -->
+        </div>
+        <div class="container container__workouts-list">
+          <div class="workouts-list">
+            <!-- <div class="message__no-workout">
+              <svg>
+                  <use href="./src/img/icons.svg#sad-icon"></use>
+              </svg>
+              <p>You have no workouts for this week!</p>
+            </div> -->
+            <!-- <div class="workout workout--walk">
+              <div class="workout-main">
+                <h2 class="workout-type">Walking</h2>
+                <h3 class="workout-date">15 April</h3>
+              </div>
+
+              <ul class="workout-details">
+                <li class="workout-detail workout-detail--duration">
+                  <svg>
+                    <use href="./src/img/icons.svg#time-icon"></use>
+                  </svg>
+                  <span class="workout-detail--duration--val">75</span>
+                </li>
+                <li class="workout-detail workout-detail--calories">
+                  <svg>
+                    <use href="./src/img/icons.svg#calories-icon"></use>
+                  </svg>
+                  <span class="workout-detail--calories--val">640</span>
+                </li>
+                <li class="workout-detail workout-detail--bpm">
+                  <svg>
+                    <use href="./src/img/icons.svg#heart-icon"></use>
+                  </svg>
+                  <span class="workout-detail--bpm--val">112</span>
+                </li>
+
+                <li class="workout-detail workout-detail--steps">
+                  <svg>
+                    <use href="./src/img/icons.svg#footsteps-icon"></use>
+                  </svg>
+                  <span class="workout-detail--steps--val">1400</span>
+                </li>
+              </ul>
+            </div> -->
+            <!-- <div class="workout workout--run">
+              <div class="workout-main">
+                <h2 class="workout-type">Running</h2>
+                <h3 class="workout-date">14 April</h3>
+              </div>
+
+              <ul class="workout-details">
+                <li class="workout-detail workout-detail--duration">
+                  <svg>
+                    <use href="./src/img/icons.svg#time-icon"></use>
+                  </svg>
+                  <span class="workout-detail--duration--val">20</span>
+                </li>
+                <li class="workout-detail workout-detail--calories">
+                  <svg>
+                    <use href="./src/img/icons.svg#calories-icon"></use>
+                  </svg>
+                  <span class="workout-detail--calories--val">560</span>
+                </li>
+                <li class="workout-detail workout-detail--bpm">
+                  <svg>
+                    <use href="./src/img/icons.svg#heart-icon"></use>
+                  </svg>
+                  <span class="workout-detail--bpm--val">135</span>
+                </li>
+
+                <li class="workout-detail workout-detail--distance">
+                  <svg>
+                    <use href="./src/img/icons.svg#distance-icon"></use>
+                  </svg>
+                  <span class="workout-detail--distance--val">1.2</span>
+                </li>
+              </ul>
+            </div> -->
+            <!-- <div class="workout workout--cycle">
+              <div class="workout-main">
+                <h2 class="workout-type">Cycling</h2>
+                <h3 class="workout-date">13 April</h3>
+              </div>
+
+              <ul class="workout-details">
+                <li class="workout-detail workout-detail--duration">
+                  <svg>
+                    <use href="./src/img/icons.svg#time-icon"></use>
+                  </svg>
+                  <span class="workout-detail--duration--val">100</span>
+                </li>
+                <li class="workout-detail workout-detail--calories">
+                  <svg>
+                    <use href="./src/img/icons.svg#calories-icon"></use>
+                  </svg>
+                  <span class="workout-detail--calories--val">1890</span>
+                </li>
+                <li class="workout-detail workout-detail--bpm">
+                  <svg>
+                    <use href="./src/img/icons.svg#heart-icon"></use>
+                  </svg>
+                  <span class="workout-detail--bpm--val">120</span>
+                </li>
+
+                <li class="workout-detail workout-detail--distance">
+                  <svg>
+                    <use href="./src/img/icons.svg#distance-icon"></use>
+                  </svg>
+                  <span class="workout-detail--distance--val">2.2</span>
+                </li>
+              </ul>
+            </div> -->
+            <!-- <div class="workout workout--lift">
+              <div class="workout-main">
+                <h2 class="workout-type">Lifting</h2>
+                <h3 class="workout-date">12 April</h3>
+              </div>
+
+              <ul class="workout-details">
+                <li class="workout-detail workout-detail--duration">
+                  <svg>
+                    <use href="./src/img/icons.svg#time-icon"></use>
+                  </svg>
+                  <span class="workout-detail--duration--val">95</span>
+                </li>
+                <li class="workout-detail workout-detail--calories">
+                  <svg>
+                    <use href="./src/img/icons.svg#calories-icon"></use>
+                  </svg>
+                  <span class="workout-detail--calories--val">820</span>
+                </li>
+                <li class="workout-detail workout-detail--bpm">
+                  <svg>
+                    <use href="./src/img/icons.svg#heart-icon"></use>
+                  </svg>
+                  <span class="workout-detail--bpm--val">115</span>
+                </li>
+              </ul>
+            </div> -->
+          </div>
+          <div class="workouts-pagination">
+            <!-- <button class="pagination__btn pagination__btn--prev">
+              <svg>
+                <use href="src/img/icons.svg#left-arrow-pagination-icon"></use>
+              </svg>
+              <span>Page 1</span>
+            </button> -->
+            <!-- <button class="pagination__btn pagination__btn--next">
+              <span>Page 2</span>
+              <svg>
+                <use href="src/img/icons.svg#right-arrow-pagination-icon"></use>
+              </svg>
+            </button> -->
+          </div>
+        </div>
+        <div class="container container__map">
+          <div id="map"></div>
+        </div>
+        <div class="container container__add-workout">
+          <h2 class="add-workout-header">Add Workout</h2>
+          <form class="workout__form" name="add-workout">
+            <div>
+              <select id="workout-type" name="workoutType" required>
+                <option value="">Type</option>
+                <option value="90013">Walk</option>
+                <option value="90009">Run</option>
+                <option value="90001">Bike</option>
+                <option value="2050">Weights</option>
+              </select>
+            </div>
+
+            <div>
+              <input
+                type="number"
+                id="workout-distance"
+                name="workoutDistance"
+                placeholder="Distance (x.xx)"
+                step="0.01"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="time"
+                id="workout-start-time"
+                name="workoutStartTime"
+                value="00:00"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="date"
+                id="workout-date"
+                name="workoutDate"
+                placeholder="2024-04-18"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="number"
+                id="workut-duration"
+                name="workoutDuration"
+                placeholder="Duration (mins)"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                id="workout-calories"
+                name="workoutCalories"
+                placeholder="Calories"
+              />
+            </div>
+            <button class="btn btn--form">Add Workout</button>
+          </form>
+        </div>
+      </div>
+      <div class="overlay hidden--window"></div>
+      <div class="user--settings-window hidden--window">
+        <button class="btn--close-modal">&times;</button>
+        <!-- <div class="user__main--data">
+          <img
+            class="user__image--settings"
+            src="./src/img/whiteBackground.jpeg"
+          />
+          <div>
+            <h2 class="user__display--name">Seif Negm</h2>
+            <h3 class="user__ID">#GGQ222</h3>
+          </div>
+        </div>
+        <div class="user__secondary--data">
+          <div class="user__secondary--data-div">
+            <p><span class="highlight">Full name | </span> Seifeldin Negm</p>
+            <p><span class="highlight">Gender | </span> Male</p>
+          </div>
+          <div class="user__secondary--data-div">
+            <p><span class="highlight">DOB | </span> 11/08/2003</p>
+            <p><span class="highlight">Age | </span> 20</p>
+          </div>
+
+          <div class="user__secondary--data-div">
+            <p><span class="highlight">Weight | </span> 80</p>
+            <p><span class="highlight">Height | </span> 180</p>
+          </div>
+        </div> -->
+        <div class="button__div">
+          <button class="btn__delete-profile">Delete Profile</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

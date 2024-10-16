@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/loginPage.css" />
+    <script type="module" src="src/js/controllers/loginController.js"></script>
+    <title>Healthify</title>
+  </head>
+  <body>
+    <a href="dashboard.html" class="hidden">dashboard</a>
+    <a href="resetPassword.html" class="hidden">Reset Password</a>
+
+    <div class="message__container">
+      <!-- <div class="message__view message__view--err">
+        <svg class="message__icon error__icon">
+          <use href="./src/img/icons.svg#error-icon"></use>
+        </svg>
+        <span class="message error--message">Error Logging in!</span>
+      </div> -->
+      <!-- <div class="message__view message__view--success">
+        <svg class="message__icon success__icon">
+          <use href="./src/img/icons.svg#success-icon"></use>
+        </svg>
+        <span class="message success--message"
+          >Account created successfully!</span
+        >
+      </div> -->
+    </div>
+    <div class="container">
+      <div class="view login__view">
+        <h1 class="main__header">Healthify</h1>
+        <form class="form login__form" name="login">
+          <div>
+            <input
+              id="login__view--username"
+              type="text"
+              placeholder="Username"
+              name="userName"
+              required
+            />
+          </div>
+          <div>
+            <input
+              id="login__view--password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
+          </div>
+          <button class="btn btn__login">Login</button>
+        </form>
+        <a href="#" class="link signup__link">Sign up for Healthify</a>
+        <a href="/forgotPassword.html" class="link forgot_password__link"
+          >Forgot my password</a
+        >
+        <div class="desc__text">
+          <p>Powered by the fitbit API</p>
+          <svg class="fitbit-logo">
+            <use href="./src/img/icons.svg#fitbit-icon"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="view sign-up__view hidden">
+        <h1 class="main__header">Healthify</h1>
+        <form class="form signup__form" name="signup">
+          <div>
+            <input
+              id="signup__view--username"
+              type="text"
+              placeholder="Username"
+              name="userName"
+              required
+            />
+          </div>
+          <div>
+            <input
+              id="signup__view--email"
+              type="email"
+              placeholder="Email"
+              name="email"
+              required
+            />
+          </div>
+          <div>
+            <input
+              id="signup__view--password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
+          </div>
+          <button class="btn btn__signup">Sign Up</button>
+        </form>
+        <a href="#" class="link login__link">Already a user? login</a>
+        <div class="desc__text">
+          <p>Powered by the fitbit API</p>
+          <svg class="fitbit-logo">
+            <use href="./src/img/icons.svg#fitbit-icon"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="img__view">
+        <img
+          src="./src/img/fitbit.jpg"
+          alt="an image containing the fitbit charge 2"
+        />
+      </div>
+    </div>
+  </body>
+</html>

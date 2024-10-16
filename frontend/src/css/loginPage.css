@@ -1,0 +1,187 @@
+:root {
+  --color-background: #020602;
+  --color-background-secondary: #040e06;
+  --color-header: #55a165;
+  --color-secondary-text: #409651;
+  --color-input--text: ##868e96;
+  --color-small--text: #d6dfd8;
+  --color-error--box: #3c0d0d;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  background-color: var(--color-background-secondary);
+  max-width: 90rem;
+  margin: 0 auto;
+  border-radius: 2.4rem;
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr;
+  justify-items: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 2rem 4.4rem rgba(0, 0, 0, 0.1);
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.message__container {
+  position: absolute;
+  top: 15%;
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.message__view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.8rem 3.2rem;
+  gap: 0.8rem;
+  border-radius: 2.4rem;
+}
+
+.message__view--err {
+  background-color: var(--color-error--box);
+}
+
+.message__view--success {
+  background-color: var(--color-header);
+}
+
+.message__icon {
+  fill: var(--color-small--text);
+  height: 3rem;
+  width: 3rem;
+}
+
+.message {
+  color: var(--color-small--text);
+  font-size: 1.6rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main__header {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--color-header);
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.form input {
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 0.8rem 2rem;
+  background-color: var(--color-small--text);
+  color: var(--color-input--text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  /* border-radius: 1.8rem; */
+  border: none;
+  width: 100%;
+}
+
+.form input::placeholder {
+  color: rgba(#868e96, 0.1);
+}
+
+.form *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.5rem rgba(253, 242, 233, 0.5);
+}
+
+.img__view img {
+  width: 100%;
+}
+
+.btn {
+  font-family: inherit;
+  background-color: var(--color-header);
+  color: var(--color-background-secondary);
+  padding: 1rem 2.4rem;
+  border-radius: 8px;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #6fb07e;
+}
+
+.desc__text {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.desc__text p {
+  color: var(--color-small--text);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.fitbit-logo {
+  fill: var(--color-small--text);
+  height: 2rem;
+  width: 2rem;
+}
+
+.link {
+  margin-top: -1rem;
+  color: var(--color-small--text);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline solid var(--color-small--text);
+}
+
+.forgot_password__link {
+  font-size: 1rem;
+  margin-bottom: -2rem;
+}
