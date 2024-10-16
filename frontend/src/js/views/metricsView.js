@@ -177,7 +177,7 @@ class MetricsView extends View {
     const dateContainer = this._parentElement.querySelector(
       '.container__date-picker'
     );
-    //format date according to the user's locale
+
     const locale = navigator.language;
     const options = {
       weekday: 'long',

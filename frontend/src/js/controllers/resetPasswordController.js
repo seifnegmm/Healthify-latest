@@ -20,8 +20,6 @@ const controlResetPasswordSubmit = async function (password) {
 };
 
 const init = function () {
-  //Publisher-subscriber pattern implementation
-
   resetPasswordView.addHandlerResetPassword(controlResetPasswordSubmit);
 };
 

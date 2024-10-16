@@ -10,16 +10,6 @@ import mapView from '../views/mapView';
 import addWorkoutView from '../views/addWorkoutView';
 import userProfileView from '../views/userProfileView';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
-// TODO Implement remove workout functionality
-// TODO Implement the delete button in the user data page
-// TODO Implement workout filtering
-// TODO Add a small marker that indicates a workout has a route
-// FIXME Fix the bug where the goals are undefined when returned from the fitbit API
-
 const updateUI = async function () {
   try {
     await model.getUserMetrics();
@@ -35,25 +25,20 @@ const updateUI = async function () {
 
 const controlPageLoad = async function () {
   try {
-    //we need to render a loading icon until data gets loaded
     metricsView.renderSpinner();
     workoutsView.renderSpinner();
 
-    //get data asscoiated with user id
     await model.getUserData();
     document.title = `${model.state.user.fullName} | Healthify`;
-    //display data related to the user details page
     await model.getUserProfileData();
     userProfileView.setWindowData(model.state.userProfile);
     userProfileView.setAvatar(model.state.userProfile.avatar);
 
     metricsView.renderWelcomeMessage(model.state.user.firstName);
 
-    //display metrics
     await model.getUserMetrics();
     metricsView.render(model.state);
 
-    //display recent workouts
     await model.getUserWorkouts();
     workoutsView.render(model.getSearchResultsPage(), true);
     workoutsPagination.render(model.state.workoutList);
@@ -62,17 +47,13 @@ const controlPageLoad = async function () {
     setTimeout(function () {
       window.location.href = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
     }, 1500);
-
-    // console.log(err);
   }
 };
 
 const controlDateChange = async function (goToVal) {
   try {
     metricsView.renderSpinner();
-    //change date in state
     model.changeDate(goToVal);
-    //update UI with data for new date
     await updateUI();
   } catch (err) {
     metricsView.renderError(err.message);
@@ -92,7 +73,6 @@ const controlWorkoutClick = async function (workoutId) {
 
 const controlWorkoutFormSubmit = async function (data) {
   try {
-    //pass collected data to model to push the workout
     await model.pushWorkout(data);
     workoutsView.renderSpinner();
     metricsView.renderSpinner();
@@ -129,7 +109,6 @@ const deleteUser = async function () {
 };
 
 const init = function () {
-  //Publisher subscriber pattern
   metricsView.handlePageLoad(controlPageLoad);
   metricsView.handleDateChange(controlDateChange);
   workoutsView.handleWorkoutClick(controlWorkoutClick);

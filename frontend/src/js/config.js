@@ -2,10 +2,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(
-  `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
-);
-
 export const TIMEOUT_SEC = 10;
 export const RES_PER_PAGE = 3;
 export const CLIENT_ID = process.env.CLIENT_ID;

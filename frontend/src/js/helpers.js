@@ -42,7 +42,7 @@ export const getJSON = async function (url, accessToken, TCX = false) {
 
     return data;
   } catch (err) {
-    throw err; // Rethrow the error for handling in calling code
+    throw err;
   }
 };
 
@@ -67,7 +67,7 @@ export const putJSON = async function (url, accessToken, contentLength) {
 
     return data;
   } catch (err) {
-    throw err; // Rethrow the error for handling in calling code
+    throw err;
   }
 };
 
@@ -133,16 +133,14 @@ export async function getFitbitRefreshAccessToken(refreshToken) {
 }
 
 export function getAuthCodeFromUrl(url) {
-  // Regular expression to match the code parameter and its value
   const regex = /[?&]code=([^&]+)/;
   const match = url.match(regex);
-
-  // If match is found, return the code value, otherwise return null
+  l;
   return match ? match[1] : null;
 }
 
 export function generateCodeVerifier() {
-  const length = Math.floor(Math.random() * (128 - 43 + 1)) + 43; // Random length between 43 and 128
+  const length = Math.floor(Math.random() * (128 - 43 + 1)) + 43;
   const charset =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
   let verifier = '';
@@ -153,7 +151,6 @@ export function generateCodeVerifier() {
   return verifier;
 }
 
-// Function to generate the SHA-256 hash of a string
 export async function generateSha256(plain) {
   const encoder = new TextEncoder();
   const data = encoder.encode(plain);
@@ -162,7 +159,6 @@ export async function generateSha256(plain) {
   return hashArray.map(b => String.fromCharCode(b)).join('');
 }
 
-// Function to base64 URL encode a string
 export function generateBase64URLEncode(str) {
   return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
