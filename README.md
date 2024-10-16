@@ -23,6 +23,7 @@ Before running the project, ensure you have the following installed:
 
 The project structure is organized as follows:
 
+```markdown
 /healthify
 │
 ├── frontend
@@ -39,6 +40,7 @@ The project structure is organized as follows:
 │
 ├── docker-compose.yml
 └── (other project files)
+```
 
 - The **frontend** contains all the UI files and Parcel configurations.
 - The **backend** contains the API logic and MongoDB connection settings.
@@ -55,7 +57,6 @@ Follow these steps to run the project locally using Docker Compose.
 ```bash
 git clone <your-repo-url>
 cd healthify
-
 ```
 
 ## 2. Run the application using Docker Compose:
@@ -74,8 +75,9 @@ Bind the frontend to port 80 and the backend to port 8000.
 
 ## 3. Access the services:
 
-Frontend: Open http://localhost in your browser.
-MongoDB: Accessible at mongodb://localhost:27017 (you can connect with a MongoDB client if needed).
+**Frontend:** Open http://localhost in your browser.
+
+**MongoDB:** Accessible at mongodb://localhost:27017 (you can connect with a MongoDB client if needed).
 
 ## 4.Stop the containers
 
@@ -91,7 +93,7 @@ The backend uses the following environment variable for the MongoDB connection:
 
 ```yaml
 environment:
-  - MONGODB_URI=mongodb://mongo:27017/mydatabase
+  - DATABASE=mongodb://mongo:27017/mydatabase
 ```
 
 ## Volumes
