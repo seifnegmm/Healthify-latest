@@ -16,6 +16,10 @@ Before running the project, ensure you have the following installed:
 
 - **Docker**: [Download here](https://docs.docker.com/get-docker/)
 - **Docker Compose**: [Install instructions](https://docs.docker.com/compose/install/)
+- **Fitbit Developer Account**: Create an account to obtain your Fitbit client ID.
+- **Mapbox Account**: Create an account to obtain your Mapbox access token.
+
+Make sure to replace the placeholders in your `.env` and `config.env` files with the appropriate values.
 
 ---
 
