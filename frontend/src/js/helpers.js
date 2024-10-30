@@ -135,7 +135,6 @@ export async function getFitbitRefreshAccessToken(refreshToken) {
 export function getAuthCodeFromUrl(url) {
   const regex = /[?&]code=([^&]+)/;
   const match = url.match(regex);
-  l;
   return match ? match[1] : null;
 }
 

@@ -16,7 +16,6 @@ const controlLoginPageLoad = async function () {
     model.getAuthCode(url);
 
     if (pathName !== '/signup/') {
-      console.log(`Pathname is: ${pathName}`);
       return;
     }
 
