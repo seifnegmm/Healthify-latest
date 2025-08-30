@@ -1,3 +1,6 @@
 # Ignore environment variable files
 frontend/.env
 backend/config.env
+# Ignore node modules
+frontend/node_modules 
+backend/node_modules
