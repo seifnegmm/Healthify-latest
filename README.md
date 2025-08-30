@@ -3,7 +3,7 @@
 This project contains:
 
 - A **frontend** built with JavaScript using Parcel.
-- A **backend** built with Node.js.
+- A **backend** built with Node.js and Express.js.
 - A **MongoDB** database.
 
 The project is dockerized and can be run using Docker Compose.
