@@ -1,17 +1,16 @@
-import { getUserDataDB, updateUserDB, deleteUserDB } from '../api';
+import { deleteUserDB, getUserDataDB, updateUserDB } from '../api';
 import {
-  getJSON,
-  putJSON,
-  XMLToJSON,
-  getFitbitRefreshAccessToken,
-} from '../helpers';
-import {
+  ACCESS_TOKEN_EXPIRY_TIME,
   API_FITBIT_URL,
   RES_PER_PAGE,
   SUPPORTED_WORKOUTS,
-  ACCESS_TOKEN_EXPIRY_TIME,
 } from '../config';
-import { accessToken } from 'mapbox-gl';
+import {
+  getFitbitRefreshAccessToken,
+  getJSON,
+  putJSON,
+  XMLToJSON,
+} from '../helpers';
 
 export let state = {
   numOfReloads: 0,
@@ -108,28 +107,33 @@ export const getUserWorkouts = async function () {
     const requestDate = new Date(state.date.formattedDate);
     requestDate.setDate(requestDate.getDate() - 7);
     const formattedDate = setFormattedDate(requestDate);
-    const url = `${API_FITBIT_URL}/${state.user.userID}/activities/list.json?afterDate=${formattedDate}&sort=asc&offset=0&limit=${state.limit}`;
-    let data = await getJSON(url, state.user.accessToken);
+
+    const url = `${API_FITBIT_URL}/${state.user.userID}/activities/list.json`;
+    const params = {
+      afterDate: formattedDate,
+      sort: 'asc',
+      offset: 0,
+      limit: state.limit,
+    };
+
+    let data = await getJSON(url, state.user.accessToken, params);
     data = data.activities;
 
     state.workoutList.workouts = data
       .filter(workout => state.workoutTypes.includes(workout.activityName))
-      .map(workout => {
-        return {
-          workoutId: workout.logId,
-          name: workout.activityName,
-          date: workout.startTime,
-          duration: workout.activeDuration,
-          distance: workout.distance,
-          calories: workout.calories,
-          steps: workout.steps,
-          heartRate: workout.averageHeartRate,
-          hasGPS: workout?.source?.trackerFeatures.includes('GPS')
-            ? true
-            : false,
-        };
-      })
+      .map(workout => ({
+        workoutId: workout.logId,
+        name: workout.activityName,
+        date: workout.startTime,
+        duration: workout.activeDuration,
+        distance: workout.distance,
+        calories: workout.calories,
+        steps: workout.steps,
+        heartRate: workout.averageHeartRate,
+        hasGPS: workout?.source?.trackerFeatures.includes('GPS') || false,
+      }))
       .reverse();
+
     state.workoutList.pagination.page = 1;
   } catch (err) {
     throw err;

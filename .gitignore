@@ -4,3 +4,7 @@ backend/config.env
 # Ignore node modules
 frontend/node_modules 
 backend/node_modules
+.specify/
+specs/
+.github/
+.DS_Store

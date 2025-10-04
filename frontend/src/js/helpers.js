@@ -1,5 +1,5 @@
-import { CLIENT_ID, TOKEN_API_URL, TIMEOUT_SEC } from './config';
 import x2js from 'x2js';
+import { CLIENT_ID, TIMEOUT_SEC, TOKEN_API_URL } from './config';
 
 const timeout = function (seconds) {
   return new Promise(function (_, reject) {
@@ -22,29 +22,29 @@ export const XMLToJSON = function (data) {
   return jsonData;
 };
 
-export const getJSON = async function (url, accessToken, TCX = false) {
+export const getJSON = async function (url, accessToken, params = {}, TCX = false) {
   try {
-    let data;
+    const queryString = new URLSearchParams(params).toString();
+    const finalUrl = queryString ? `${url}?${queryString}` : url;
+
     const headers = new Headers();
     headers.append('Authorization', `Bearer ${accessToken}`);
-    TCX && headers.append('content-type', 'application/xml');
+    if (TCX) headers.append('Content-Type', 'application/xml');
 
-    const options = {
-      headers,
-    };
+    const options = { headers };
 
-    const res = await Promise.race([fetch(url, options), timeout(TIMEOUT_SEC)]);
-    if (!TCX) data = await res.json();
-    else data = await res.text();
+    const res = await Promise.race([fetch(finalUrl, options), timeout(TIMEOUT_SEC)]);
+    const data = TCX ? await res.text() : await res.json();
 
     if (!res.ok)
-      throw new Error(`Request failed: ${data.message} (${res.status})`);
+      throw new Error(`Request failed: ${data.message || res.statusText} (${res.status})`);
 
     return data;
   } catch (err) {
     throw err;
   }
 };
+
 
 export const putJSON = async function (url, accessToken, contentLength) {
   try {

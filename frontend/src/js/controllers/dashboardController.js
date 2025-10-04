@@ -1,14 +1,13 @@
 import 'core-js/stable'; //for polifilling async await
 import 'regenerator-runtime/runtime'; //for polifilling almost everything else
-import { async } from 'regenerator-runtime';
 
 import * as model from '../models/dashboardModel';
-import metricsView from '../views/metricsView';
-import workoutsView from '../views/workoutsView';
-import workoutsPagination from '../views/workoutsPagination';
-import mapView from '../views/mapView';
 import addWorkoutView from '../views/addWorkoutView';
+import mapView from '../views/mapView';
+import metricsView from '../views/metricsView';
 import userProfileView from '../views/userProfileView';
+import workoutsPagination from '../views/workoutsPagination';
+import workoutsView from '../views/workoutsView';
 
 const updateUI = async function () {
   try {
@@ -44,9 +43,10 @@ const controlPageLoad = async function () {
     workoutsPagination.render(model.state.workoutList);
   } catch (err) {
     metricsView.renderError(err.message);
-    setTimeout(function () {
-      window.location.href = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
-    }, 1500);
+    console.log(err);
+    // setTimeout(function () {
+    //   window.location.href = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+    // }, 1500);
   }
 };
 
