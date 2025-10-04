@@ -31,4 +31,7 @@ router
     userController.getAllUsers
   );
 
+// Fitbit API proxy route to bypass CORS
+router.get('/fitbit-proxy/*', userController.fitbitProxy);
+
 module.exports = router;

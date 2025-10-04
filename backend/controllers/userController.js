@@ -77,3 +77,45 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.fitbitProxy = catchAsync(async (req, res, next) => {
+  const fitbitPath = req.params[0];
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return next(new AppError('Missing or invalid Authorization header', 401));
+  }
+
+  const jwtToken = authHeader.split(' ')[1];
+
+  const fitbitUrl = new URL(`https://api.fitbit.com/1/${fitbitPath}`);
+
+  for (const [key, value] of Object.entries(req.query)) {
+    fitbitUrl.searchParams.append(key, value);
+  }
+
+  try {
+    const response = await fetch(fitbitUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${jwtToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      return next(new AppError(`Fitbit API error: ${errorData}`, response.status));
+    }
+
+    const contentType = response.headers.get('content-type');
+    const data = contentType && contentType.includes('application/json')
+      ? await response.json()
+      : await response.text();
+
+    res.status(response.status).json(data);
+  } catch (error) {
+    return next(new AppError(`Fitbit API request failed: ${error.message}`, 502));
+  }
+});
+
